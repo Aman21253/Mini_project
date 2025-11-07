@@ -106,7 +106,7 @@ app.post('/register', async (req, res) => {
             });
             let token = jwt.sign({ email: email, userid: user._id }, "xyz");
             res.cookie("token", token);
-            res.send("You successfully registered to our platform");
+            res.redirect("/redirect");
         })
     })
 })
