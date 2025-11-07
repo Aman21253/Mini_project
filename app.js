@@ -13,8 +13,26 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser());
+app.use((req, res, next) => {
+    const token = req.cookies.token;
+    if (token) {
+        try {
+            const data = jwt.verify(token, "xyz");
+            req.user = data;
+            res.locals.user = data;
+        } catch (err) {
+            res.locals.user = null;
+        }
+    } else {
+        res.locals.user = null;
+    }
+    next();
+});
 
 app.get('/', (req, res) => {
+    res.send("Hi")
+})
+app.get('/register', (req, res) => {
     res.render("index")
 })
 

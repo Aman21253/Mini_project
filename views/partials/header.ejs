@@ -1,0 +1,12 @@
+<header class="w-full bg-zinc-800 text-white px-8 py-4 flex justify-between items-center">
+    <a href="/" class="text-2xl font-bold tracking-wide text-blue-400">MiniGram</a>
+    <nav class="flex items-center gap-4">
+        <% if (user) { %>
+            <a href="/profile" class="px-3 py-1 bg-blue-500 rounded-md hover:bg-blue-600 transition">Profile</a>
+            <a href="/logout" class="px-3 py-1 bg-red-500 rounded-md hover:bg-red-600 transition">Logout</a>
+        <% } else { %>
+            <a href="/login" class="px-3 py-1 bg-blue-500 rounded-md hover:bg-blue-600 transition">Login</a>
+            <a href="/register" class="px-3 py-1 bg-green-500 rounded-md hover:bg-green-600 transition">Register</a>
+        <% } %>
+    </nav>
+</header>
