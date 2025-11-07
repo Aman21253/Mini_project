@@ -30,7 +30,7 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => {
-    res.send("Hi")
+    res.render("index")
 })
 app.get('/register', (req, res) => {
     res.render("index")
