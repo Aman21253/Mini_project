@@ -7,6 +7,7 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const path = require('path');
 const upload = require("./config/multerconfig");
+require('dotenv').config();
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -28,6 +29,10 @@ app.use((req, res, next) => {
     }
     next();
 });
+
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("✅ MongoDB Connected"))
+    .catch(err => console.log("❌ MongoDB Error:", err));
 
 app.get('/', (req, res) => {
     res.render("index")
